@@ -1,13 +1,16 @@
 {
   "name": "app-logger",
   "version": "1.0.0",
-  "description": "",
+  "description": "Build logger for project",
   "main": "index.js",
+  "homepage": "https://github.com/NguyenPhuocMinh/app-logger",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "winston"
+  ],
+  "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
     "winston": "^3.3.3"
