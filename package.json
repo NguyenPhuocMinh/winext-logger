@@ -1,5 +1,5 @@
 {
-  "name": "loggingfactory",
+  "name": "winrow-logger",
   "version": "1.0.0",
   "description": "Build logger for project",
   "main": "index.js",
