@@ -1,5 +1,5 @@
 {
-  "name": "app-logger",
+  "name": "loggingfactory",
   "version": "1.0.0",
   "description": "Build logger for project",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "winston"
   ],
   "author": "Minh Nguyễn",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "winston": "^3.3.3"
   }
