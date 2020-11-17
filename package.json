@@ -1,6 +1,6 @@
 {
   "name": "winrow-logger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Build logger for project",
   "main": "index.js",
   "homepage": "https://github.com/NguyenPhuocMinh/app-logger",
