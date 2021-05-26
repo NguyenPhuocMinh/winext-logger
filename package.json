@@ -2,7 +2,7 @@
   "name": "winext-logger",
   "version": "1.0.0",
   "description": "Build logger with library winston",
-  "homepage": "https://github.com/NguyenPhuocMinh/app-logger",
+  "homepage": "https://github.com/NguyenPhuocMinh/winext-logger",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
