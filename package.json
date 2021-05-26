@@ -1,9 +1,9 @@
 {
-  "name": "winrow-logger",
-  "version": "1.0.6",
-  "description": "Build logger for project",
-  "main": "index.js",
+  "name": "winext-logger",
+  "version": "1.0.0",
+  "description": "Build logger with library winston",
   "homepage": "https://github.com/NguyenPhuocMinh/app-logger",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "winston"
   ],
   "author": "Minh Nguyễn",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "winston": "^3.3.3"
   }
