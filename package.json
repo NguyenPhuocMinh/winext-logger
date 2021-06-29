@@ -13,6 +13,7 @@
   "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
+    "log4js": "^6.3.0",
     "winston": "^3.3.3"
   }
 }

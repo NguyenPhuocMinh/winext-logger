@@ -16,5 +16,19 @@ module.exports = {
       data: 'italic magenta',
       info: 'bold green',
     }
+  },
+  log4js: {
+    appenders: {
+      cheese: {
+        type: "file",
+        filename: "cheese.log"
+      }
+    },
+    categories: {
+      default: {
+        appenders: ["cheese"],
+        level: "debug"
+      }
+    }
   }
 };
