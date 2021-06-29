@@ -19,15 +19,12 @@ module.exports = {
   },
   log4js: {
     appenders: {
-      cheese: {
-        type: "file",
-        filename: "cheese.log"
-      }
+      out: { type: 'stdout' }
     },
     categories: {
       default: {
-        appenders: ["cheese"],
-        level: "debug"
+        appenders: ['out'],
+        level: 'debug'
       }
     }
   }
