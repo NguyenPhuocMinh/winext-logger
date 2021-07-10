@@ -8,11 +8,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "winston"
+    "winston",
+    "log4js",
+    "chalk"
   ],
   "author": "Minh Nguyễn",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.1",
     "log4js": "^6.3.0",
     "winston": "^3.3.3"
   },
