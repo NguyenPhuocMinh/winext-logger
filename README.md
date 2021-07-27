@@ -1,5 +1,14 @@
-### Installation
+## Plugin support for win
 
-```sh
-$ npm install winext-logger
+### Structure
+```
+.
+├── README.md
+├── config
+│   └── options.js
+├── index.js
+├── lib
+│   └── logger.js
+├── package-lock.json
+├── package.json
 ```
