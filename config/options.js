@@ -27,5 +27,8 @@ module.exports = {
         level: 'debug'
       }
     }
+  },
+  levels: {
+    info: '\x1B[32m\x1B[1mINFO\x1B[22m\x1B[39m'
   }
 };
