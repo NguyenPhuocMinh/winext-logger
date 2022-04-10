@@ -32,5 +32,7 @@ module.exports = {
     info: '\x1B[32m\x1B[1mINFO\x1B[22m\x1B[39m',
     warn: '\x1B[33m\x1B[1mWARN\x1B[22m\x1B[39m',
     debug: '\x1B[34m\x1B[1mDEBUG\x1B[22m\x1B[39m',
+    error: '\x1B[31m\x1B[1mERROR\x1B[22m\x1B[39m',
+    data: '\x1B[35m\x1B[3mDATA\x1B[23m\x1B[39m',
   },
 };
