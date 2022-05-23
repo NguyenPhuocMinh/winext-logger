@@ -6,7 +6,7 @@ const convertUtils = require('./convert-util');
 
 const logUtils = {};
 
-const createLogger = (name = '') => {
+const createLogger = (appName = '-', name = '-') => {
   const logger = winston.createLogger({
     levels: options.logger.levels,
     format: winston.format.combine(
@@ -14,7 +14,7 @@ const createLogger = (name = '') => {
       winston.format.colorize(),
       winston.format.simple(),
       winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-      winston.format.label({ label: `${name}` }),
+      winston.format.label({ label: `${appName}:${name}` }),
       winston.format.printf((info) => convertUtils.convertFormatter(info))
     ),
     transports: [new winston.transports.Console({ level: 'silly' })],
@@ -22,38 +22,38 @@ const createLogger = (name = '') => {
   return logger;
 };
 
-const LogError = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogError = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.error(message, meta);
 };
 
-const LogWarn = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogWarn = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.warn(message, meta);
 };
 
-const LogInfo = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogInfo = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.info(message, meta);
 };
 
-const LogDebug = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogDebug = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.debug(message, meta);
 };
 
-const LogHttp = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogHttp = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.http(message, meta);
 };
 
-const LogVerbose = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogVerbose = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.verbose(message, meta);
 };
 
-const LogSilly = (name, message, meta) => {
-  const logger = createLogger(name);
+const LogSilly = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
   return logger.silly(message, meta);
 };
 

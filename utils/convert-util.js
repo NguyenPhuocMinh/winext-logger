@@ -5,55 +5,63 @@ const options = require('../config/options');
 
 const convertUtils = {};
 
-const convertLogger = (level, label, message) => {
+const convertLogger = (level, label, message, timestamp) => {
   switch (level) {
     case options.logger.symbols.info:
       return {
-        levelLog: chalk.hex('#4caf50').bold('INFO'),
-        labelLog: chalk.hex('#4caf50').bold(label),
-        messageLog: chalk.hex('#4caf50').bold(message),
+        levelLog: chalk.hex(options.logger.colors.info).bold('INFO'),
+        labelLog: chalk.hex(options.logger.colors.info).bold(label),
+        messageLog: chalk.hex(options.logger.colors.info).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.info).bold(timestamp),
       };
     case options.logger.symbols.warn:
       return {
-        levelLog: chalk.hex('#ffeb3b').bold('WARN'),
-        labelLog: chalk.hex('#ffeb3b').bold(label),
-        messageLog: chalk.hex('#ffeb3b').bold(message),
+        levelLog: chalk.hex(options.logger.colors.warn).bold('WARN'),
+        labelLog: chalk.hex(options.logger.colors.warn).bold(label),
+        messageLog: chalk.hex(options.logger.colors.warn).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.warn).bold(timestamp),
       };
     case options.logger.symbols.debug:
       return {
-        levelLog: chalk.hex('#2196f3').bold('DEBUG'),
-        labelLog: chalk.hex('#2196f3').bold(label),
-        messageLog: chalk.hex('#2196f3').bold(message),
+        levelLog: chalk.hex(options.logger.colors.debug).bold('DEBUG'),
+        labelLog: chalk.hex(options.logger.colors.debug).bold(label),
+        messageLog: chalk.hex(options.logger.colors.debug).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.debug).bold(timestamp),
       };
     case options.logger.symbols.error:
       return {
-        levelLog: chalk.hex('#f44336').bold('ERROR'),
-        labelLog: chalk.hex('#f44336').bold(label),
-        messageLog: chalk.hex('#f44336').bold(message),
+        levelLog: chalk.hex(options.logger.colors.error).bold('ERROR'),
+        labelLog: chalk.hex(options.logger.colors.error).bold(label),
+        messageLog: chalk.hex(options.logger.colors.error).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.error).bold(timestamp),
       };
     case options.logger.symbols.http:
       return {
-        levelLog: chalk.hex('#ff9800').bold('HTTP'),
-        labelLog: chalk.hex('#ff9800').bold(label),
-        messageLog: chalk.hex('#ff9800').bold(message),
+        levelLog: chalk.hex(options.logger.colors.http).bold('HTTP'),
+        labelLog: chalk.hex(options.logger.colors.http).bold(label),
+        messageLog: chalk.hex(options.logger.colors.http).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.http).bold(timestamp),
       };
     case options.logger.symbols.verbose:
       return {
-        levelLog: chalk.hex('#00bcd4').bold('VERBOSE'),
-        labelLog: chalk.hex('#00bcd4').bold(label),
-        messageLog: chalk.hex('#00bcd4').bold(message),
+        levelLog: chalk.hex(options.logger.colors.verbose).bold('VERBOSE'),
+        labelLog: chalk.hex(options.logger.colors.verbose).bold(label),
+        messageLog: chalk.hex(options.logger.colors.verbose).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.verbose).bold(timestamp),
       };
     case options.logger.symbols.silly:
       return {
-        levelLog: chalk.hex('#673ab7').bold('SILLY'),
-        labelLog: chalk.hex('#673ab7').bold(label),
-        messageLog: chalk.hex('#673ab7').bold(message),
+        levelLog: chalk.hex(options.logger.colors.silly).bold('SILLY'),
+        labelLog: chalk.hex(options.logger.colors.silly).bold(label),
+        messageLog: chalk.hex(options.logger.colors.silly).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.silly).bold(timestamp),
       };
     default:
       return {
-        levelLog: chalk.hex('#009688').bold('NO LEVEL'),
-        labelLog: chalk.hex('#009688').bold(label),
-        messageLog: chalk.hex('#009688').bold(message),
+        levelLog: chalk.hex(options.logger.colors.default).bold('NO LEVEL'),
+        labelLog: chalk.hex(options.logger.colors.default).bold(label),
+        messageLog: chalk.hex(options.logger.colors.default).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.default).bold(timestamp),
       };
   }
 };
@@ -61,9 +69,9 @@ const convertLogger = (level, label, message) => {
 const convertFormatter = (info) => {
   const { label, level, message, timestamp } = info;
 
-  const { levelLog, labelLog, messageLog } = convertLogger(level, label, message);
+  const { levelLog, labelLog, messageLog, timestampLog } = convertLogger(level, label, message, timestamp);
 
-  return `${labelLog} [${chalk.hex('#f73378').bold(timestamp)}] [${levelLog}]: ${messageLog}`;
+  return `${labelLog} [${timestampLog}] [${levelLog}]: ${messageLog}`;
 };
 
 convertUtils.convertLogger = convertLogger;

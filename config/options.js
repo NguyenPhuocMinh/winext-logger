@@ -21,16 +21,15 @@ const logger = {
     debug: 5,
     silly: 6,
   },
-  log4js: {
-    appenders: {
-      out: { type: 'stdout' },
-    },
-    categories: {
-      default: {
-        appenders: ['out'],
-        level: 'debug',
-      },
-    },
+  colors: {
+    error: '#f44336',
+    warn: '#ffeb3b',
+    info: '#4caf50',
+    http: '#ff9800',
+    verbose: '#00bcd4',
+    debug: '#2196f3',
+    silly: '#673ab7',
+    default: '#009688',
   },
 };
 

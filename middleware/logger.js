@@ -21,13 +21,13 @@ const logger = (tokens, req, res) => {
 
   switch (status) {
     case '404':
-      logUtils.Warn('router', messageLog);
+      logUtils.Warn('log-http', 'router', messageLog);
       break;
     case '500':
-      logUtils.Error('server', messageLog);
+      logUtils.Error('log-http', 'server', messageLog);
       break;
     default:
-      logUtils.Info('router', messageLog);
+      logUtils.Info('log-http', 'router', messageLog);
       break;
   }
 };

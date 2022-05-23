@@ -1,5 +1,1 @@
-const options = require('./options');
-
-module.exports = {
-  options,
-};
+module.exports = {};
