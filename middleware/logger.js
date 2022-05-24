@@ -24,7 +24,7 @@ const logger = (tokens, req, res) => {
       logUtils.Warn('log-http', 'router', messageLog);
       break;
     case '500':
-      logUtils.Error('log-http', 'server', messageLog);
+      logUtils.Error('log-http', 'router', messageLog);
       break;
     default:
       logUtils.Info('log-http', 'router', messageLog);

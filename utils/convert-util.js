@@ -66,15 +66,59 @@ const convertLogger = (level, label, message, timestamp) => {
   }
 };
 
+const convertArgs = (level, args) => {
+  if (typeof args === 'undefined') {
+    return {
+      argsLog: '',
+    };
+  }
+  switch (level) {
+    case options.logger.symbols.info:
+      return {
+        argsLog: chalk.hex(options.logger.colors.info).bold(JSON.stringify(args)),
+      };
+    case options.logger.symbols.warn:
+      return {
+        argsLog: chalk.hex(options.logger.colors.warn).bold(JSON.stringify(args)),
+      };
+    case options.logger.symbols.debug:
+      return {
+        argsLog: chalk.hex(options.logger.colors.debug).bold(JSON.stringify(args)),
+      };
+    case options.logger.symbols.error:
+      return {
+        argsLog: chalk.hex(options.logger.colors.error).bold(JSON.stringify(args)),
+      };
+    case options.logger.symbols.http:
+      return {
+        argsLog: chalk.hex(options.logger.colors.http).bold(JSON.stringify(args)),
+      };
+    case options.logger.symbols.verbose:
+      return {
+        argsLog: chalk.hex(options.logger.colors.verbose).bold(JSON.stringify(args)),
+      };
+    case options.logger.symbols.silly:
+      return {
+        argsLog: chalk.hex(options.logger.colors.silly).bold(JSON.stringify(args)),
+      };
+    default:
+      return {
+        argsLog: chalk.hex(options.logger.colors.default).bold(JSON.stringify(args)),
+      };
+  }
+};
+
 const convertFormatter = (info) => {
-  const { label, level, message, timestamp } = info;
+  const { label, level, message, timestamp, args } = info;
 
   const { levelLog, labelLog, messageLog, timestampLog } = convertLogger(level, label, message, timestamp);
+  const { argsLog } = convertArgs(level, args);
 
-  return `${labelLog} [${timestampLog}] [${levelLog}]: ${messageLog}`;
+  return `${labelLog} [${timestampLog}] [${levelLog}]: ${messageLog} ${argsLog}`;
 };
 
 convertUtils.convertLogger = convertLogger;
 convertUtils.convertFormatter = convertFormatter;
+convertUtils.convertArgs = convertArgs;
 
 module.exports = convertUtils;
