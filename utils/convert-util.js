@@ -75,11 +75,7 @@ const convertArgs = (level, args) => {
     };
   }
 
-  if (args.length > 100) {
-    argsLog = JSON.stringify(args, null, '\t');
-  } else {
-    argsLog = JSON.stringify(args, null, 1);
-  }
+  argsLog = JSON.stringify(args);
 
   switch (level) {
     case options.logger.symbols.info:
