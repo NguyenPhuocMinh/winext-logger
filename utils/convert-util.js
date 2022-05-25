@@ -56,6 +56,13 @@ const convertLogger = (level, label, message, timestamp) => {
         messageLog: chalk.hex(options.logger.colors.silly).bold(message),
         timestampLog: chalk.hex(options.logger.colors.silly).bold(timestamp),
       };
+    case options.logger.symbols.data:
+      return {
+        levelLog: chalk.hex(options.logger.colors.data).bold('DATA'),
+        labelLog: chalk.hex(options.logger.colors.data).bold(label),
+        messageLog: chalk.hex(options.logger.colors.data).bold(message),
+        timestampLog: chalk.hex(options.logger.colors.data).bold(timestamp),
+      };
     default:
       return {
         levelLog: chalk.hex(options.logger.colors.default).bold('NO LEVEL'),
@@ -105,6 +112,10 @@ const convertArgs = (level, args) => {
     case options.logger.symbols.silly:
       return {
         argsLog: chalk.hex(options.logger.colors.silly).bold(argsLog),
+      };
+    case options.logger.symbols.data:
+      return {
+        argsLog: chalk.hex(options.logger.colors.data).bold(argsLog),
       };
     default:
       return {

@@ -11,6 +11,7 @@ const logger = {
     http: '\x1B[32mHTTP\x1B[39m',
     verbose: '\x1B[36mVERBOSE\x1B[39m',
     silly: '\x1B[35mSILLY\x1B[39m',
+    data: '\x1B[90mDATA\x1B[39m',
   },
   levels: {
     error: 0,
@@ -20,6 +21,7 @@ const logger = {
     verbose: 4,
     debug: 5,
     silly: 6,
+    data: 7,
   },
   colors: {
     error: '#f44336', // red 500
@@ -29,6 +31,7 @@ const logger = {
     verbose: '#00bcd4', // cyan 500
     debug: '#2962ff', // blue A700
     silly: '#673ab7', // deepPurple 500
+    data: '#e91e63',
     default: '#009688', // teal 500
   },
 };

@@ -17,7 +17,7 @@ const createLogger = (appName = '-', name = '-') => {
       winston.format.label({ label: `${appName}:${name}` }),
       winston.format.printf((info) => convertUtils.convertFormatter(info))
     ),
-    transports: [new winston.transports.Console({ level: 'silly' })],
+    transports: [new winston.transports.Console({ level: 'data' })],
   });
   return logger;
 };
@@ -57,6 +57,11 @@ const LogSilly = (appName, name, message, meta) => {
   return logger.silly(message, meta);
 };
 
+const LogData = (appName, name, message, meta) => {
+  const logger = createLogger(appName, name);
+  return logger.data(message, meta);
+};
+
 logUtils.createLogger = createLogger;
 
 logUtils.Error = LogError;
@@ -66,5 +71,6 @@ logUtils.Debug = LogDebug;
 logUtils.Http = LogHttp;
 logUtils.Verbose = LogVerbose;
 logUtils.Silly = LogSilly;
+logUtils.Data = LogData;
 
 module.exports = logUtils;
