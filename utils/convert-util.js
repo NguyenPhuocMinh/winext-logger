@@ -67,43 +67,52 @@ const convertLogger = (level, label, message, timestamp) => {
 };
 
 const convertArgs = (level, args) => {
+  let argsLog = '';
+
   if (typeof args === 'undefined') {
     return {
-      argsLog: '',
+      argsLog,
     };
   }
+
+  if (args.length > 100) {
+    argsLog = JSON.stringify(args, null, '\t');
+  } else {
+    argsLog = JSON.stringify(args, null, 1);
+  }
+
   switch (level) {
     case options.logger.symbols.info:
       return {
-        argsLog: chalk.hex(options.logger.colors.info).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.info).bold(argsLog),
       };
     case options.logger.symbols.warn:
       return {
-        argsLog: chalk.hex(options.logger.colors.warn).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.warn).bold(argsLog),
       };
     case options.logger.symbols.debug:
       return {
-        argsLog: chalk.hex(options.logger.colors.debug).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.debug).bold(argsLog),
       };
     case options.logger.symbols.error:
       return {
-        argsLog: chalk.hex(options.logger.colors.error).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.error).bold(argsLog),
       };
     case options.logger.symbols.http:
       return {
-        argsLog: chalk.hex(options.logger.colors.http).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.http).bold(argsLog),
       };
     case options.logger.symbols.verbose:
       return {
-        argsLog: chalk.hex(options.logger.colors.verbose).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.verbose).bold(argsLog),
       };
     case options.logger.symbols.silly:
       return {
-        argsLog: chalk.hex(options.logger.colors.silly).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.silly).bold(argsLog),
       };
     default:
       return {
-        argsLog: chalk.hex(options.logger.colors.default).bold(JSON.stringify(args)),
+        argsLog: chalk.hex(options.logger.colors.default).bold(argsLog),
       };
   }
 };

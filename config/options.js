@@ -22,14 +22,14 @@ const logger = {
     silly: 6,
   },
   colors: {
-    error: '#f44336',
-    warn: '#ffeb3b',
-    info: '#4caf50',
-    http: '#ff9800',
-    verbose: '#00bcd4',
-    debug: '#2196f3',
-    silly: '#673ab7',
-    default: '#009688',
+    error: '#f44336', // red 500
+    warn: '#ffeb3b', // yellow 500
+    info: '#4caf50', // green 500
+    http: '#ff9800', // orange 500
+    verbose: '#00bcd4', // cyan 500
+    debug: '#2962ff', // blue A700
+    silly: '#673ab7', // deepPurple 500
+    default: '#009688', // teal 500
   },
 };
 
