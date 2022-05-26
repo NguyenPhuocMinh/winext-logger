@@ -36,6 +36,17 @@ const logger = {
   },
 };
 
+const httpStatus = {
+  Accepted: '202',
+  Success: '200',
+  BadRequest: '400',
+  UnAuthorization: '401',
+  Forbidden: '403',
+  NotFound: '404',
+  ServerError: '500',
+};
+
 options.logger = logger;
+options.httpStatus = httpStatus;
 
 module.exports = options;

@@ -1,6 +1,7 @@
 'use strict';
 
 const logUtils = require('../utils/log-util');
+const options = require('../config/options');
 
 const logger = (tokens, req, res) => {
   const remoteAddr = tokens['remote-addr'](req);
@@ -20,10 +21,13 @@ const logger = (tokens, req, res) => {
   const messageLog = `[${requestID}] - ${remoteAddr} - ${remoteUser} [${dateClf}] "${method} ${url} ${protocol}/${httpVersion}" ${status} ${contentLength} "${referrer}" "${userAgent}" - ${resTime} ms`;
 
   switch (status) {
-    case '404':
+    case options.httpStatus.BadRequest:
+    case options.httpStatus.UnAuthorization:
+    case options.httpStatus.Forbidden:
+    case options.httpStatus.NotFound:
       logUtils.Warn('log-http', 'router', messageLog);
       break;
-    case '500':
+    case options.httpStatus.ServerError:
       logUtils.Error('log-http', 'router', messageLog);
       break;
     default:
