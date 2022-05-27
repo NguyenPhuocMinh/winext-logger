@@ -11,11 +11,11 @@ const logger = (tokens, req, res) => {
   const url = tokens.url(req, res);
   const protocol = req.protocol;
   const httpVersion = tokens['http-version'](req);
-  const status = tokens.status(req, res);
-  const contentLength = tokens.res(req, res, 'content-length');
+  const status = tokens.status(req, res) || '-';
+  const contentLength = tokens.res(req, res, 'content-length') || '-';
   const resTime = tokens['response-time'](req, res);
   const referrer = tokens.referrer(req) || '-';
-  const userAgent = tokens['user-agent'](req);
+  const userAgent = tokens['user-agent'](req) || '-';
   const requestID = req.requestID;
 
   const messageLog = `[${requestID}] - ${remoteAddr} - ${remoteUser} [${dateClf}] "${method} ${url} ${protocol}/${httpVersion}" ${status} ${contentLength} "${referrer}" "${userAgent}" - ${resTime} ms`;
