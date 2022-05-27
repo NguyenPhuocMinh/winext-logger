@@ -31,7 +31,7 @@ const logger = {
     verbose: '#00bcd4', // cyan 500
     debug: '#2962ff', // blue A700
     silly: '#673ab7', // deepPurple 500
-    data: '#e91e63',
+    data: '#e91e63', // pink 500
     default: '#009688', // teal 500
   },
 };
@@ -43,6 +43,7 @@ const httpStatus = {
   UnAuthorization: '401',
   Forbidden: '403',
   NotFound: '404',
+  MethodNotAllow: '405',
   ServerError: '500',
 };
 

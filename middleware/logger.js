@@ -30,8 +30,15 @@ const logger = (tokens, req, res) => {
     case options.httpStatus.ServerError:
       logUtils.Error('log-http', 'router', messageLog);
       break;
-    default:
+    case options.httpStatus.Success:
+    case options.httpStatus.Accepted:
       logUtils.Info('log-http', 'router', messageLog);
+      break;
+    case options.httpStatus.MethodNotAllow:
+      logUtils.Verbose('log-http', 'router', messageLog);
+      break;
+    default:
+      logUtils.Silly('log-http', 'router', messageLog);
       break;
   }
 };
