@@ -1,7 +1,9 @@
 'use strict';
 
-const logUtils = require('../utils/log-util');
 const options = require('../config/options');
+
+const logUtils = require('../utils/log-util');
+const loggerFactory = logUtils.createLogger('log-http', 'router');
 
 const logger = (tokens, req, res) => {
   const remoteAddr = tokens['remote-addr'](req);
@@ -25,20 +27,20 @@ const logger = (tokens, req, res) => {
     case options.httpStatus.UnAuthorization:
     case options.httpStatus.Forbidden:
     case options.httpStatus.NotFound:
-      logUtils.Warn('log-http', 'router', messageLog);
+      loggerFactory.Warn(messageLog);
       break;
     case options.httpStatus.ServerError:
-      logUtils.Error('log-http', 'router', messageLog);
+      loggerFactory.Error(messageLog);
       break;
     case options.httpStatus.Success:
     case options.httpStatus.Accepted:
-      logUtils.Info('log-http', 'router', messageLog);
+      loggerFactory.Info(messageLog);
       break;
     case options.httpStatus.MethodNotAllow:
-      logUtils.Verbose('log-http', 'router', messageLog);
+      loggerFactory.Verbose(messageLog);
       break;
     default:
-      logUtils.Silly('log-http', 'router', messageLog);
+      loggerFactory.Silly(messageLog);
       break;
   }
 };
