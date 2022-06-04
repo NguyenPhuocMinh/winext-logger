@@ -6,7 +6,7 @@ const convertUtils = require('./convert-util');
 
 const logUtils = {};
 
-const createLogger = (appName = '-', name = '-') => {
+const createLogger = (appName = '-', name = '-', appColor = {}) => {
   const logger = winston.createLogger({
     levels: options.logger.levels,
     format: winston.format.combine(
@@ -15,50 +15,50 @@ const createLogger = (appName = '-', name = '-') => {
       winston.format.simple(),
       winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
       winston.format.label({ label: `${appName}:${name}` }),
-      winston.format.printf((info) => convertUtils.convertFormatter(info))
+      winston.format.printf((info) => convertUtils.convertFormatter(info, appColor))
     ),
     transports: [new winston.transports.Console({ level: 'data' })],
   });
   return logger;
 };
 
-const LogError = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogError = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.error(message, meta);
 };
 
-const LogWarn = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogWarn = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.warn(message, meta);
 };
 
-const LogInfo = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogInfo = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.info(message, meta);
 };
 
-const LogDebug = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogDebug = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.debug(message, meta);
 };
 
-const LogHttp = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogHttp = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.http(message, meta);
 };
 
-const LogVerbose = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogVerbose = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.verbose(message, meta);
 };
 
-const LogSilly = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogSilly = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.silly(message, meta);
 };
 
-const LogData = (appName, name, message, meta) => {
-  const logger = createLogger(appName, name);
+const LogData = (appName, name, appColor, message, meta) => {
+  const logger = createLogger(appName, name, appColor);
   return logger.data(message, meta);
 };
 
