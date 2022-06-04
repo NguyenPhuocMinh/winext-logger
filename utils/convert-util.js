@@ -39,8 +39,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
       return {
         levelLog: chalk.hex(addColors.http).bold('HTTP'),
         labelLog: chalk.hex(addColors.http).bold(label),
-        // messageLog: chalk.hex(appColor.http).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.http).bold(message),
         timestampLog: chalk.hex(addColors.http).bold(timestamp),
       };
     case options.logger.symbols.verbose:
