@@ -11,32 +11,28 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
       return {
         levelLog: chalk.hex(addColors.info).bold('INFO'),
         labelLog: chalk.hex(addColors.info).bold(label),
-        // messageLog: chalk.hex(appColor.info).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.info).bold(message),
         timestampLog: chalk.hex(addColors.info).bold(timestamp),
       };
     case options.logger.symbols.warn:
       return {
         levelLog: chalk.hex(addColors.warn).bold('WARN'),
         labelLog: chalk.hex(addColors.warn).bold(label),
-        // messageLog: chalk.hex(appColor.warn).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.warn).bold(message),
         timestampLog: chalk.hex(addColors.warn).bold(timestamp),
       };
     case options.logger.symbols.debug:
       return {
         levelLog: chalk.hex(addColors.debug).bold('DEBUG'),
         labelLog: chalk.hex(addColors.debug).bold(label),
-        // messageLog: chalk.hex(appColor.debug).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.debug).bold(message),
         timestampLog: chalk.hex(addColors.debug).bold(timestamp),
       };
     case options.logger.symbols.error:
       return {
         levelLog: chalk.hex(addColors.error).bold('ERROR'),
         labelLog: chalk.hex(addColors.error).bold(label),
-        // messageLog: chalk.hex(appColor.error).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.error).bold(message),
         timestampLog: chalk.hex(addColors.error).bold(timestamp),
       };
     case options.logger.symbols.http:
@@ -51,32 +47,28 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
       return {
         levelLog: chalk.hex(addColors.verbose).bold('VERBOSE'),
         labelLog: chalk.hex(addColors.verbose).bold(label),
-        // messageLog: chalk.hex(appColor.verbose).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.verbose).bold(message),
         timestampLog: chalk.hex(addColors.verbose).bold(timestamp),
       };
     case options.logger.symbols.silly:
       return {
         levelLog: chalk.hex(addColors.silly).bold('SILLY'),
         labelLog: chalk.hex(addColors.silly).bold(label),
-        // messageLog: chalk.hex(appColor.silly).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.silly).bold(message),
         timestampLog: chalk.hex(addColors.silly).bold(timestamp),
       };
     case options.logger.symbols.data:
       return {
         levelLog: chalk.hex(addColors.data).bold('DATA'),
         labelLog: chalk.hex(addColors.data).bold(label),
-        // messageLog: chalk.hex(appColor.data).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.data).bold(message),
         timestampLog: chalk.hex(addColors.data).bold(timestamp),
       };
     default:
       return {
         levelLog: chalk.hex(addColors.default).bold('NO LEVEL'),
         labelLog: chalk.hex(addColors.default).bold(label),
-        // messageLog: chalk.hex(appColor.default).bold(message),
-        messageLog: message,
+        messageLog: chalk.hex(addColors.default).bold(message),
         timestampLog: chalk.hex(addColors.default).bold(timestamp),
       };
   }

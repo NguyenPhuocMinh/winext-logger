@@ -24,15 +24,15 @@ const logger = {
     data: 7,
   },
   colors: {
-    error: '#f44336', // red 500
-    warn: '#ffeb3b', // yellow 500
-    info: '#4caf50', // green 500
-    http: '#ff9800', // orange 500
-    verbose: '#00bcd4', // cyan 500
-    debug: '#2962ff', // blue A700
-    silly: '#673ab7', // deepPurple 500
-    data: '#e91e63', // pink 500
-    default: '#009688', // teal 500
+    error: '#FF0000',
+    warn: '#FFCC00',
+    info: '#00CC00',
+    http: '#FF6633',
+    verbose: '#00CCFF',
+    debug: '#3300FF',
+    silly: '#6600FF',
+    data: '#FF33CC',
+    default: '#3399FF',
   },
 };
 
