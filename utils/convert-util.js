@@ -3,6 +3,7 @@
 const chalk = require('chalk');
 const options = require('../config/options');
 const profiles = require('../config/profiles');
+const validateUtils = require('../utils/validate-util');
 
 const convertLogger = (level, label, message, timestamp, addColors = {}) => {
   switch (level) {
@@ -11,6 +12,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.info).bold('INFO'),
         labelLog: chalk.hex(addColors.info).bold(label),
         // messageLog: chalk.hex(appColor.info).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.info).bold(timestamp),
       };
     case options.logger.symbols.warn:
@@ -18,6 +20,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.warn).bold('WARN'),
         labelLog: chalk.hex(addColors.warn).bold(label),
         // messageLog: chalk.hex(appColor.warn).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.warn).bold(timestamp),
       };
     case options.logger.symbols.debug:
@@ -25,6 +28,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.debug).bold('DEBUG'),
         labelLog: chalk.hex(addColors.debug).bold(label),
         // messageLog: chalk.hex(appColor.debug).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.debug).bold(timestamp),
       };
     case options.logger.symbols.error:
@@ -32,6 +36,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.error).bold('ERROR'),
         labelLog: chalk.hex(addColors.error).bold(label),
         // messageLog: chalk.hex(appColor.error).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.error).bold(timestamp),
       };
     case options.logger.symbols.http:
@@ -39,6 +44,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.http).bold('HTTP'),
         labelLog: chalk.hex(addColors.http).bold(label),
         // messageLog: chalk.hex(appColor.http).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.http).bold(timestamp),
       };
     case options.logger.symbols.verbose:
@@ -46,6 +52,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.verbose).bold('VERBOSE'),
         labelLog: chalk.hex(addColors.verbose).bold(label),
         // messageLog: chalk.hex(appColor.verbose).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.verbose).bold(timestamp),
       };
     case options.logger.symbols.silly:
@@ -53,6 +60,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.silly).bold('SILLY'),
         labelLog: chalk.hex(addColors.silly).bold(label),
         // messageLog: chalk.hex(appColor.silly).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.silly).bold(timestamp),
       };
     case options.logger.symbols.data:
@@ -60,6 +68,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.data).bold('DATA'),
         labelLog: chalk.hex(addColors.data).bold(label),
         // messageLog: chalk.hex(appColor.data).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.data).bold(timestamp),
       };
     default:
@@ -67,6 +76,7 @@ const convertLogger = (level, label, message, timestamp, addColors = {}) => {
         levelLog: chalk.hex(addColors.default).bold('NO LEVEL'),
         labelLog: chalk.hex(addColors.default).bold(label),
         // messageLog: chalk.hex(appColor.default).bold(message),
+        messageLog: message,
         timestampLog: chalk.hex(addColors.default).bold(timestamp),
       };
   }
@@ -126,15 +136,17 @@ const convertArgs = (level, args, addColors = {}) => {
 const convertFormatter = (info, appColor = {}) => {
   const { label, level, message, timestamp, args } = info;
 
-  const defaultColors = options.logger.colors;
-  const addColors = Object.assign({}, defaultColors, appColor);
-
-  for (const key in appColor) {
-    if (!profiles.colorSupports.includes(appColor[key])) {
-      console.warn(`Color support for logger: ${JSON.stringify(profiles.colorSupports)}`);
-      throw new Error(`Color hex is not support ${key}:${appColor[key]}`);
+  if (!validateUtils.isEmpty(appColor)) {
+    for (const key in appColor) {
+      if (!profiles.colorSupports.includes(appColor[key])) {
+        console.warn(`Color support for logger: ${JSON.stringify(profiles.colorSupports)}`);
+        throw new Error(`Color hex is not support ${key}:${appColor[key]}`);
+      }
     }
   }
+
+  const defaultColors = options.logger.colors;
+  const addColors = Object.assign({}, defaultColors, appColor);
 
   const { levelLog, labelLog, messageLog, timestampLog } = convertLogger(level, label, message, timestamp, addColors);
   const { argsLog } = convertArgs(level, args, addColors);
