@@ -27,20 +27,20 @@ const logger = (tokens, req, res) => {
     case options.httpStatus.UnAuthorization:
     case options.httpStatus.Forbidden:
     case options.httpStatus.NotFound:
-      loggerFactory.Warn(messageLog);
+      loggerFactory.warn(messageLog);
       break;
     case options.httpStatus.ServerError:
-      loggerFactory.Error(messageLog);
+      loggerFactory.error(messageLog);
       break;
     case options.httpStatus.Success:
     case options.httpStatus.Accepted:
-      loggerFactory.Info(messageLog);
+      loggerFactory.info(messageLog);
       break;
     case options.httpStatus.MethodNotAllow:
-      loggerFactory.Verbose(messageLog);
+      loggerFactory.verbose(messageLog);
       break;
     default:
-      loggerFactory.Silly(messageLog);
+      loggerFactory.silly(messageLog);
       break;
   }
 };
