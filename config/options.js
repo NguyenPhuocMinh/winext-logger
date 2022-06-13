@@ -37,13 +37,15 @@ const logger = {
 };
 
 const httpStatus = {
-  Accepted: '202',
   Success: '200',
+  Created: '201',
+  Accepted: '202',
   BadRequest: '400',
   UnAuthorization: '401',
   Forbidden: '403',
   NotFound: '404',
   MethodNotAllow: '405',
+  Duplicate: '409',
   ServerError: '500',
 };
 

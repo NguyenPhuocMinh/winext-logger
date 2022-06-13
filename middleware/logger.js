@@ -18,7 +18,7 @@ const logger = (tokens, req, res) => {
   const resTime = tokens['response-time'](req, res) || '-';
   const referrer = tokens.referrer(req) || '-';
   const userAgent = tokens['user-agent'](req) || '-';
-  const requestID = req.requestID;
+  const requestID = req.requestID || '-';
 
   const messageLog = `[${requestID}] - ${remoteAddr} - ${remoteUser} [${dateClf}] "${method} ${url} ${protocol}/${httpVersion}" ${status} ${contentLength} "${referrer}" "${userAgent}" - ${resTime} ms`;
 
@@ -33,11 +33,15 @@ const logger = (tokens, req, res) => {
       loggerFactory.error(messageLog);
       break;
     case options.httpStatus.Success:
+    case options.httpStatus.Created:
     case options.httpStatus.Accepted:
       loggerFactory.info(messageLog);
       break;
     case options.httpStatus.MethodNotAllow:
       loggerFactory.verbose(messageLog);
+      break;
+    case options.httpStatus.Duplicate:
+      loggerFactory.debug(messageLog);
       break;
     default:
       loggerFactory.silly(messageLog);
