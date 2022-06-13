@@ -1,6 +1,6 @@
 {
   "name": "winext-logger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Build logger with library winston",
   "homepage": "https://github.com/NguyenPhuocMinh/winext-logger",
   "main": "index.js",
